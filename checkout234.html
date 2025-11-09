@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta cha$et="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700%7CRoboto:300,400,500,700,900&display=swap" rel="stylesheet">
+	<!-- include the site bootstrap stylesheet -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- include the site fontawesome stylesheet -->
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<!-- include the site stylesheet -->
+	<link rel="stylesheet" href="style.css">
+	<!-- include theme plugins setting stylesheet -->
+	<link rel="stylesheet" href="css/plugins.css">
+	<!-- include theme color setting stylesheet -->
+	<link rel="stylesheet" href="css/color.css">
+	<!-- include theme responsive setting stylesheet -->
+    <link rel="stylesheet" href="css/responsive.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,700');
+
+        body {
+            font-family: "Playfair Display", serif;
+            min-height: 100vh;
+            letter-spacing: 0.025rem;
+            line-height: 1.4;
+            background: #fafafa;
+        }
+        img {
+            max-width: 100%;
+        }
+        main {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr;
+            @media screen and (min-width: 1060px) {
+            grid-template-columns: minmax(530px, 3fr) minmax(530px, 2fr);
+            }
+        }
+        
+        .cart {
+            padding: 2rem;
+            > .cart-item, > .shipping, > .total {
+                display: grid;
+                grid-template-columns: minmax(80px, 2fr) 6fr 3ch 7ch;
+                grid-gap: 1rem;
+                align-items: center;
+                .image {
+                    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.5));
+                }
+                .title {
+                    font-weight: 700;
+                    > span {
+                        display: block;
+                        font-weight: 300;
+                    }
+                }
+                .price {
+                    text-align: right;
+                }
+            }
+            .total .title, .shipping .title {
+                grid-column: 2;
+            }
+            .total {
+                border-top: 1px solid #dadada;
+                border-bottom: 1px solid #dadada;
+                .price {
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                }
+            }
+        }
+        .checkout {
+            background: #fff;
+            font-family: "Playfair Display", serif;
+            padding: 2rem;
+            padding-right: 3rem;
+            header {
+                display: grid;
+                grid-template-columns: minmax(16ch, 1fr) 4fr;
+                h1, p {
+                    margin-top: 0;
+                    grid-column: 2;
+                }
+                h1 {margin-bottom: 0;}
+                p {margin-bottom: 2rem;}
+                
+            }
+            form {
+                .input-group {
+                    margin-bottom: 1.5rem;
+                    display: grid;
+                    grid-template-columns: minmax(16ch, 1fr) 4fr;
+                    align-items: baseline;
+                    .label {
+                        padding-right: 1rem;
+                        text-align: right;
+                    }
+                    .input {
+                        align-items: baseline;}
+                        input{
+                            width: 100%;
+                            border: 0;
+                            font-size: inherit;
+                            font-family: "Playfair Display", serif;
+                            color: inherit;
+                            border-bottom: 1px solid #dadada;
+                            padding: 0.5rem 0;
+                            &:focus {
+                                outline: none;
+                                border-color: #121212;
+                            }
+                        }
+                        &.number {
+                            display: flex;
+                            > span {
+                                padding: 0 0.5rem;
+                            }
+                            input {
+                                text-align: center;
+                                min-width: 4ch;
+                            }
+                        }
+                    }
+                    .button {
+                        grid-column: 2;
+                        background: #121212;
+                        color: #FFF;
+                        padding: 1rem;
+                        border: 0;
+                        /* cu$or: pointer; */
+                        margin-top: 2rem;
+                        &:hover {
+                            transform: translatey(-1px);
+                        }
+                    }
+                }
+            }
+            .label{
+                margin-right: 20px;
+            }
+            .title{
+                font-family: "Playfair Display", serif;
+                font-size: larger;
+                font-weight: bold;
+            }
+        </style>
+</head>
+<body>
+    <div class="headerHolderCol pt-lg-4 pb-lg-5 py-3"style="background-color: rgb(84, 231, 84);">
+        <div class="container" >
+            <div class="row">
+                <div class="col-12 col-sm-4">
+                    <a href="javascript:void(0);" class="tel d-flex align-items-end"><i class="fas fa-phone-alt mr-2" style="color: rgb(0, 0, 0);"></i ><span style="color: #121212;">  Hotline: 000 000 0000</span></a>
+                </div>
+                <div class="col-12 col-sm-4 text-center">
+                    <span class="txt d-block">Welcome To Plant Palace</span>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <!-- langListII -->
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <main>
+        <section class="cart">
+            <div class="cart-item">
+                <img src="img13-removebg-preview.png" class="image">
+                <p class="title">Lilium <span>2.5cm &times; 2.8cm</span></p>
+                <p class="currency">$</p>
+                <p class="price">4.25</p>
+            </div><br>
+            <div class="cart-item">
+                <img src="img45-removebg-preview.png" class="image">
+                <p class="title">salvia <span>2.4cm &times; 2.8cm</span></p>
+                <p class="currency">$</p>
+                <p class="price">4.25</p>
+            </div><br>
+            <div class="cart-item">
+                <img src="img66-removebg-preview.png" class="image">
+                <p class="title">Lavender<span>2.7cm &times; 2.3cm</span></p>
+                <p class="currency">$</p>
+                <p class="price">5.60</p>
+            </div>
+            <div class="shipping">
+                <p class="title">Shipping</p>
+                <p class="currency">$</p>
+                <p class="price">2.70</p>
+            </div>
+            <div class="total">
+                <p class="title">Total</p>
+                <p class="currency">$</p>
+                <p class="price">16.80</p>
+            </div>
+        </section>
+        <section class="checkout">
+            <header>
+                <h1>Checkout</h1>
+                <p>by Credit Card</p>
+            </header>
+            <form id="form">
+                <div class="input-group">
+                    <div class="label">
+                        <label for="name">Full Name</label>
+                    </div><br><br>
+                    <div class="input">
+                        <input type="text" id="name" placeholder="Enter Name" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="label">
+                        <label for="number">Card Number</label>
+                    </div><br><br>
+                    <div class="input number">
+                        <input type="number" min="1000" max="9999" id="number" placeholder="0000" required><span>&ndash;</span><input type="number" min="1000" max="9999" placeholder="0000" required><span>&ndash;</span><input type="number" min="1000" max="9999" placeholder="0000" required><span>&ndash;</span><input type="number" min="1000" max="9999" placeholder="0000" required>
+                    </div>
+                </div><br>
+                <div class="input-group">
+                    <div class="label">
+                        <label for="cvc">Security Code</label>
+                    </div><br><br>
+                    <div class="input">
+                        <input type="number" id="cvc" placeholder="000" min="001" max="999" step="1" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="label">
+                        <label for="expire-month">Expiry</label>
+                    </div><br><br>
+                    <div class="input">
+                        <input type="month" id="expire-month" required>
+                    </div>
+                    </div><br><br>
+                    <button>checkout
+                    </button>
+                   
+                </div><br><br>
+            </form>
+        </section>
+    </main>
+    <script>
+
+        document.getElementById("form").addEventListener("submit",function(){
+            alert("Thank you for your order")
+            location.reload()
+        })
+
+
+    //  function myFunction() {
+    //    var txt;
+    //    if (confirm("Your Form Is Successfully submited")) {
+    //    }
+    //    document.getElementById("submit")
+    //  }
+     </script>
+   <aside class="footerHolder overflow-hidden bg-lightGray pt-xl-23 pb-xl-8 pt-lg-10 pb-lg-8 pt-md-12 pb-md-8 pt-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 mb-lg-0 mb-4">
+                <h3 class="headingVI fwEbold text-uppercase mb-7">Contact Us</h3>
+                <ul class="list-unstyled footerContactList mb-3">
+                    <li class="mb-3 d-flex flex-nowrap"><i class="fal fa-map-marker-alt pr-3"></i> <address class="fwEbold m-0">Address: Karachi, Pakistan 74600.</address></li>
+                    <li class="mb-3 d-flex flex-nowrap"><i class="fal fa-phone-alt pr-3"></i></span> <span class="leftAlign">Phone : <a href="javascript:void(0);">(+92) 333 1234567</a></span></li>
+                    <li class="email d-flex flex-nowrap"><i class="fal fa-envelope pr-3"></i> <span class="leftAlign">Email : <a href="javascript:void(0);">info@plantstore.com</a></span></li>
+                </ul>
+                <ul class="list-unstyled followSocailNetwork d-flex flex-nowrap">
+                    <li class="fwEbold mr-xl-11 mr-md-8 mr-3">Follow  us:</li>
+                    <li class="mr-xl-6 mr-md-5 mr-2"><a href="https://www.facebook.com/campaign/landing.php?campaign_id=1653377901&extra_1=s%7Cc%7C318307045126%7Ce%7Cfacebook%27%7C&placement=&creative=318307045126&keyword=facebook%27&partner_id=googlesem&extra_2=campaignid%3D1653377901%26adgroupid%3D65139789042%26matchtype%3De%26network%3Dg%26source%3Dnotmobile%26search_or_content%3Ds%26device%3Dc%26devicemodel%3D%26adposition%3D%26target%3D%26targetid%3Dkwd-362360550869%26loc_physical_ms%3D1011081%26loc_interest_ms%3D%26feeditemid%3D%26param1%3D%26param2%3D&gclid=Cj0KCQjwldKmBhCCARIsAP-0rfyzw4fLn_LQhoQ4nUvovmOXuHD3a-bMwGDMI9xy6teBIiS1rRU0NRYaArIlEALw_wcB;" class="fab fa-facebook-f"></a></li>
+                    <li class="mr-xl-6 mr-md-5 mr-2"><a href="https://twitter.com/;" class="fab fa-twitter"></a></li>
+                    <li class="mr-xl-6 mr-md-5 mr-2"><a href="https://www.pinterest.com/;" class="fab fa-pinterest"></a></li>
+                    <li class="mr-2"><a href="https://www.google.com/;" class="fab fa-google-plus-g"></a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 pl-xl-14 mb-lg-0 mb-4">
+                <h3 class="headingVI fwEbold text-uppercase mb-6">Information</h3>
+                <ul class="list-unstyled footerNavList">
+                    <li class="mb-1"><a href="shop.html">New Products</a></li>
+                <li class="mb-2"><a href="index.html">Top Sellers</a></li>
+                <li class="mb-2"><a href="blog.html">Our Blog</a></li>
+                <li class="mb-2"><a href="shop.html">About Our Shop</a></li>
+                <!-- <li><a href="javascript:void(0);">Privacy policy</a></li> -->
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 pl-xl-12 mb-lg-0 mb-4">
+                <h3 class="headingVI fwEbold text-uppercase mb-7">My Account</h3>
+                <ul class="list-unstyled footerNavList">
+                    <li class="mb-1"><a href="index.html">My account</a></li>
+                    <li class="mb-2"><a href="checkout.html">Orders history</a></li>
+                    <li><a href="feedback.html">Feedback Form</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-2 pl-xl-18 mb-lg-0 mb-4">
+                <h3 class="headingVI fwEbold text-uppercase mb-5">PRODUCTS</h3>
+                <ul class="list-unstyled footerNavList">
+                    <li class="mb-2"><a href="about-us.html">Delivery</a></li>
+                    <li class="mb-2"><a href="javascript:void(0);">Legal notice</a></li>
+                    <li class="mb-2"><a href="shop.html">New products</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</aside>
+</main>
+
+<div class="fixed-ico">
+    <div id="loader">
+        <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+          xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="108.53244mm" height="114.199mm"
+          viewBox="0 0 108.53244 114.199" version="1.1" id="leaf-loader" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+          sodipodi:docname="flower.svg">
+          <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-39.569957,-93.034065)">
+            <g transform="matrix(-0.01277061,-0.01521942,0.01525757,-0.01280262,14.110102,301.49448)" fill="#000000"
+              stroke="none">
+              <path class="leaf"
+                d="m 5235.9416,9935.0616 c -116.421,-67.215 -200.6213,-140.6606 -272.2761,-236.7891 -74.2674,-100.1837 -128.5569,-220.6696 -205.4726,-459.279 -90.1023,-278.6957 -149.8973,-401.0867 -254.4393,-519.3862 -79.3689,-90.3948 -145.9643,-140.9413 -281.2418,-214.5868 -130.7364,-71.0237 -224.0527,-105.7981 -399.6914,-148.624 -80.1117,-19.5101 -241.7168,-50.4135 -299.9478,-57.2905 -37.5819,-4.5064 -38.8185,-7.1305 16.9016,42.2311 137.1683,121.8551 224.9062,250.1913 367.1817,534.8134 67.6318,136.4666 136.9265,258.6118 179.4228,317.5304 108.6473,151.2325 227.6619,247.325 412.7687,331.9112 l 24.0844,10.7214 -24.7771,-4.7541 c -95.6695,-18.3047 -237.6951,-88.8423 -320.9343,-159.1858 -108.2794,-91.8046 -199.1962,-204.1478 -353.2137,-436.9703 -131.7397,-198.9483 -215.6371,-309.1493 -305.3301,-401.6841 -50.3491,-51.9913 -110.1962,-105.6457 -131.6638,-118.04 l -11.5595,-6.6739 -22.7515,46.08 c -75.0094,150.8952 -115.9954,278.1364 -135.0989,416.1013 -43.1959,316.9833 66.0451,592.0844 322.3664,808.8384 53.3813,44.8314 256.9121,164.2457 324.7654,190.6866 314.631,120.526 645.5636,167.0534 1048.9627,147.1754 114.2729,-5.338 358.5256,-29.8684 388.4067,-38.7224 3.4432,-1.196 -25.1789,-20.268 -66.4625,-44.103 z"
+                id="path2703" />
+            </g>
+            <g transform="matrix(0.00839639,-0.01800611,0.01805124,0.00841742,-76.555021,138.57097)" fill="#000000"
+              stroke="none">
+              <path class="leaf"
+                d="m 5235.9416,9935.0616 c -116.421,-67.215 -200.6213,-140.6606 -272.2761,-236.7891 -74.2674,-100.1837 -128.5569,-220.6696 -205.4726,-459.279 -90.1023,-278.6957 -149.8973,-401.0867 -254.4393,-519.3862 -79.3689,-90.3948 -145.9643,-140.9413 -281.2418,-214.5868 -130.7364,-71.0237 -224.0527,-105.7981 -399.6914,-148.624 -80.1117,-19.5101 -241.7168,-50.4135 -299.9478,-57.2905 -37.5819,-4.5064 -38.8185,-7.1305 16.9016,42.2311 137.1683,121.8551 224.9062,250.1913 367.1817,534.8134 67.6318,136.4666 136.9265,258.6118 179.4228,317.5304 108.6473,151.2325 227.6619,247.325 412.7687,331.9112 l 24.0844,10.7214 -24.7771,-4.7541 c -95.6695,-18.3047 -237.6951,-88.8423 -320.9343,-159.1858 -108.2794,-91.8046 -199.1962,-204.1478 -353.2137,-436.9703 -131.7397,-198.9483 -215.6371,-309.1493 -305.3301,-401.6841 -50.3491,-51.9913 -110.1962,-105.6457 -131.6638,-118.04 l -11.5595,-6.6739 -22.7515,46.08 c -75.0094,150.8952 -115.9954,278.1364 -135.0989,416.1013 -43.1959,316.9833 66.0451,592.0844 322.3664,808.8384 53.3813,44.8314 256.9121,164.2457 324.7654,190.6866 314.631,120.526 645.5636,167.0534 1048.9627,147.1754 114.2729,-5.338 358.5256,-29.8684 388.4067,-38.7224 3.4432,-1.196 -25.1789,-20.268 -66.4625,-44.103 z"
+                id="path1708" />
+            </g>
+            <g transform="matrix(0.01979194,-0.00173157,0.00173592,0.01984154,18.654023,-4.1605353)" fill="#000000"
+              stroke="none">
+              <path class="leaf"
+                d="m 5235.9416,9935.0616 c -116.421,-67.215 -200.6213,-140.6606 -272.2761,-236.7891 -74.2674,-100.1837 -128.5569,-220.6696 -205.4726,-459.279 -90.1023,-278.6957 -149.8973,-401.0867 -254.4393,-519.3862 -79.3689,-90.3948 -145.9643,-140.9413 -281.2418,-214.5868 -130.7364,-71.0237 -224.0527,-105.7981 -399.6914,-148.624 -80.1117,-19.5101 -241.7168,-50.4135 -299.9478,-57.2905 -37.5819,-4.5064 -38.8185,-7.1305 16.9016,42.2311 137.1683,121.8551 224.9062,250.1913 367.1817,534.8134 67.6318,136.4666 136.9265,258.6118 179.4228,317.5304 108.6473,151.2325 227.6619,247.325 412.7687,331.9112 l 24.0844,10.7214 -24.7771,-4.7541 c -95.6695,-18.3047 -237.6951,-88.8423 -320.9343,-159.1858 -108.2794,-91.8046 -199.1962,-204.1478 -353.2137,-436.9703 -131.7397,-198.9483 -215.6371,-309.1493 -305.3301,-401.6841 -50.3491,-51.9913 -110.1962,-105.6457 -131.6638,-118.04 l -11.5595,-6.6739 -22.7515,46.08 c -75.0094,150.8952 -115.9954,278.1364 -135.0989,416.1013 -43.1959,316.9833 66.0451,592.0844 322.3664,808.8384 53.3813,44.8314 256.9121,164.2457 324.7654,190.6866 314.631,120.526 645.5636,167.0534 1048.9627,147.1754 114.2729,-5.338 358.5256,-29.8684 388.4067,-38.7224 3.4432,-1.196 -25.1789,-20.268 -66.4625,-44.103 z"
+                id="path1712" />
+            </g>
+            <g transform="matrix(0.01277061,0.01521942,-0.01525757,0.01280262,173.44651,-0.95168583)" fill="#000000"
+              stroke="none">
+              <path class="leaf"
+                d="m 5275.8938,9866.0355 c -116.421,-67.215 -200.6213,-140.6606 -272.2761,-236.7891 -74.2674,-100.1837 -128.5569,-220.6696 -205.4726,-459.279 -90.1023,-278.6957 -149.8973,-401.0867 -254.4393,-519.3862 -79.3689,-90.3948 -145.9643,-140.9413 -281.2418,-214.5868 -130.7364,-71.0237 -224.0527,-105.7981 -399.6914,-148.624 -80.1117,-19.5101 -241.7168,-50.4135 -299.9478,-57.2905 -37.5819,-4.5064 -38.8185,-7.1305 16.9016,42.2311 137.1683,121.8551 224.9062,250.1913 367.1817,534.8134 67.6318,136.4666 136.9265,258.6118 179.4228,317.5304 108.6473,151.2325 227.6619,247.325 412.7687,331.9112 l 24.0844,10.7214 -24.7771,-4.7541 c -95.6695,-18.3047 -237.6951,-88.8423 -320.9343,-159.1858 -108.2794,-91.8046 -199.1962,-204.1478 -353.2137,-436.9703 -131.7397,-198.9483 -215.6371,-309.1493 -305.3301,-401.6841 -50.3491,-51.9913 -110.1962,-105.6457 -131.6638,-118.04 l -11.5595,-6.6739 -22.7515,46.08 c -75.0094,150.8952 -115.9954,278.1364 -135.0989,416.1013 -43.1959,316.9833 66.0451,592.0844 322.3664,808.8384 53.3813,44.8314 256.9121,164.2457 324.7654,190.6866 314.631,120.526 645.5636,167.0531 1048.9627,147.1754 114.2729,-5.338 358.5256,-29.8684 388.4067,-38.7224 3.4432,-1.196 -25.1789,-20.268 -66.4625,-44.103 z"
+                id="path1700" />
+            </g>
+            <g transform="matrix(-0.01032158,0.01697598,-0.01701853,-0.01034744,264.13013,182.51492)" fill="#000000"
+              stroke="none">
+              <path class="leaf"
+                d="m 5235.9416,9935.0616 c -116.421,-67.215 -200.6213,-140.6606 -272.2761,-236.7891 -74.2674,-100.1837 -128.5569,-220.6696 -205.4726,-459.279 -90.1023,-278.6957 -149.8973,-401.0867 -254.4393,-519.3862 -79.3689,-90.3948 -145.9643,-140.9413 -281.2418,-214.5868 -130.7364,-71.0237 -224.0527,-105.7981 -399.6914,-148.624 -80.1117,-19.5101 -241.7168,-50.4135 -299.9478,-57.2905 -37.5819,-4.5064 -38.8185,-7.1305 16.9016,42.2311 137.1683,121.8551 224.9062,250.1913 367.1817,534.8134 67.6318,136.4666 136.9265,258.6118 179.4228,317.5304 108.6473,151.2325 227.6619,247.325 412.7687,331.9112 l 24.0844,10.7214 -24.7771,-4.7541 c -95.6695,-18.3047 -237.6951,-88.8423 -320.9343,-159.1858 -108.2794,-91.8046 -199.1962,-204.1478 -353.2137,-436.9703 -131.7397,-198.9483 -215.6371,-309.1493 -305.3301,-401.6841 -50.3491,-51.9913 -110.1962,-105.6457 -131.6638,-118.04 l -11.5595,-6.6739 -22.7515,46.08 c -75.0094,150.8952 -115.9954,278.1364 -135.0989,416.1013 -43.1959,316.9833 66.0451,592.0844 322.3664,808.8384 53.3813,44.8314 256.9121,164.2457 324.7654,190.6866 314.631,120.526 645.5636,167.0534 1048.9627,147.1754 114.2729,-5.338 358.5256,-29.8684 388.4067,-38.7224 3.4432,-1.196 -25.1789,-20.268 -66.4625,-44.103 z"
+                id="path1728" />
+            </g>
+            <g transform="matrix(-0.01979194,0.00173157,-0.00173592,-0.01984154,170.75102,304.04487)" fill="#000000"
+              stroke="none">
+              <path class="leaf"
+                d="m 5235.9416,9935.0616 c -116.421,-67.215 -200.6213,-140.6606 -272.2761,-236.7891 -74.2674,-100.1837 -128.5569,-220.6696 -205.4726,-459.279 -90.1023,-278.6957 -149.8973,-401.0867 -254.4393,-519.3862 -79.3689,-90.3948 -145.9643,-140.9413 -281.2418,-214.5868 -130.7364,-71.0237 -224.0527,-105.7981 -399.6914,-148.624 -80.1117,-19.5101 -241.7168,-50.4135 -299.9478,-57.2905 -37.5819,-4.5064 -38.8185,-7.1305 16.9016,42.2311 137.1683,121.8551 224.9062,250.1913 367.1817,534.8134 67.6318,136.4666 136.9265,258.6118 179.4228,317.5304 108.6473,151.2325 227.6619,247.325 412.7687,331.9112 l 24.0844,10.7214 -24.7771,-4.7541 c -95.6695,-18.3047 -237.6951,-88.8423 -320.9343,-159.1858 -108.2794,-91.8046 -199.1962,-204.1478 -353.2137,-436.9703 -131.7397,-198.9483 -215.6371,-309.1493 -305.3301,-401.6841 -50.3491,-51.9913 -110.1962,-105.6457 -131.6638,-118.04 l -11.5595,-6.6739 -22.7515,46.08 c -75.0094,150.8952 -115.9954,278.1364 -135.0989,416.1013 -43.1959,316.9833 66.0451,592.0844 322.3664,808.8384 53.3813,44.8314 256.9121,164.2457 324.7654,190.6866 314.631,120.526 645.5636,167.0534 1048.9627,147.1754 114.2729,-5.338 358.5256,-29.8684 388.4067,-38.7224 3.4432,-1.196 -25.1789,-20.268 -66.4625,-44.103 z"
+                id="path1724" />
+            </g>
+          </g>
+        </svg>
+      </div>
+</div>
+</div>
+<script>
+    const leaves = document.querySelectorAll('.leaf');
+
+function startLoader() {
+oneTurn();
+
+setInterval(() => {
+oneTurn();
+leaves[leaves.length - 1].style.fill = '#b0b6b1';
+}, 1800);
+}
+
+function oneTurn() {
+for (let i = 0; i < leaves.length; i += 1) {
+setTimeout(() => {
+  if (i > 0) {
+    leaves[i - 1].style.fill = '#b0b6b1';
+  }
+
+  leaves[i].style.fill = '#528d5c';
+}, i * 300);
+}
+}
+
+startLoader();
+</script>
+</body>
+</html>
